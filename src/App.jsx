@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Formulario from './components/Formulario'
 import Listado from './components/Listado'
-import BalanceTotal from './components/BalanceTotal'
+import Balance from './components/Balance'
 
 function App() {
   const [movimientos, setMovimientos] = useState([])
@@ -12,13 +12,17 @@ function App() {
   const eliminarMovimiento = (movEliminar) => {
     setMovimientos(movimientos.filter((m)=>m.id!==movEliminar.id))
   }
-  
+
+  const actualizarMovimiento = (movEditado) =>{
+    setMovimientos(movimientos.map((m)=> m.id === movEditado.id ? movEditado : m))
+  }
+
   return (
       <div className='contenedorApp'>
         <Formulario className='formulario' agregarMov={agregarMovimientos}/>
         <div className='contenedorInfo'>
-          <BalanceTotal movimientos={movimientos}/>
-          <Listado movimientos={movimientos} eliminar={eliminarMovimiento}/>
+          <Balance className='contenedor-balance' movimientos={movimientos}/>
+          <Listado movimientos={movimientos} eliminar={eliminarMovimiento} actualizar={actualizarMovimiento} className='contenedor-listado'/>
         </div>
       </div>
   )

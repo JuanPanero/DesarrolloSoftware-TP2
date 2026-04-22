@@ -4,12 +4,12 @@ import '../App.css'
 function Formulario({agregarMov, className}) {
     const [descripcion, setDescripcion] = useState('')
     const [monto, setMonto] = useState(0)
-    const [tipo, setTipo] = useState('ingreso')
-    const [categoria, setCategoria] = useState('')
-    const [fecha, setFecha] = useState('')
+    const [tipo, setTipo] = useState('gasto')
+    const [categoria, setCategoria] = useState('comida')
+    const [fecha, setFecha] = useState(new Date().toISOString().split('T')[0])
 
     const guardarMov = (e) =>{
-        e.preventDefault();
+        e.preventDefault()
 
         if(monto <= 0 || descripcion === ''){
             alert("Por favor, complete bien los campos")
@@ -29,7 +29,7 @@ function Formulario({agregarMov, className}) {
 
         setDescripcion('')
         setMonto(0)
-        setCategoria('')
+        setCategoria('comida')
     }
    
     return(
@@ -40,13 +40,15 @@ function Formulario({agregarMov, className}) {
                 <div className='campoForm'>
                     <label htmlFor="descripcion">Descripción</label>
                     <input type="text" id='descripcion' placeholder='Ej. Supermercado' value={descripcion} 
-                        onChange={(e)=>setDescripcion(e.target.value)}/>
+                        onChange={(e)=>setDescripcion(e.target.value)}
+                    />
                 </div>
                 
                 <div className='campoForm'>
                     <label htmlFor="monto">Monto</label>
                     <input type="number" id='monto' placeholder='$0.00' value={monto}
-                        onChange={(e)=>setMonto(e.target.value)}/>
+                        onChange={(e)=>setMonto(e.target.value)}
+                    />
                 </div>
     
                 <div className='campoForm'>
@@ -81,6 +83,7 @@ function Formulario({agregarMov, className}) {
                     <label htmlFor="categoria">Categoría</label>
                     <select id='categoria' value={categoria} placeholder='Categoría' onChange={(e)=>setCategoria(e.target.value)}>
                         <option value="comida">Comida</option>
+                        <option value="salario">Salario</option>
                         <option value="transporte">Transporte</option>
                         <option value="ocio">Ocio</option>
                         <option value="servicios">Servicios</option>
