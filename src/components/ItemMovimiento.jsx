@@ -62,7 +62,7 @@ function ItemMovimiento({mov, eliminar, actualizar}){
                     <input type="text" id='descripcion' placeholder='Ej. Supermercado' value={descripcion} 
                         onChange={(e)=>setDescripcion(e.target.value)}
                     />
-                    <select id='categoria' value={categoria} placeholder='Categoría' 
+                    <select id='categoria' value={categoria} placeholder='Categoría'
                         onChange={(e)=>setCategoria(e.target.value)}>
                         <option value="comida">Comida</option>
                         <option value="salario">Salario</option>
@@ -72,7 +72,7 @@ function ItemMovimiento({mov, eliminar, actualizar}){
                         <option value="salud">Salud</option>
                         <option value="otros">Otros</option>
                     </select>
-                    <input type="number" id='monto' placeholder='$0.00' value={monto}
+                    <input type="number" id='monto' placeholder='$0.00' value={monto} 
                         onChange={(e)=>setMonto(e.target.value)}
                     />
                     <select id="tipo" value={tipo}
@@ -80,20 +80,28 @@ function ItemMovimiento({mov, eliminar, actualizar}){
                         <option value="gasto">Gasto</option>
                         <option value="ingreso">Ingreso</option>
                     </select>
-                    <button onClick={manejoCambiar}>Guardar</button>
-                    <button onClick={cambiarEditando}>Cancelar</button>
+                    <div>
+                        <button onClick={manejoCambiar} className="btn-accion btn-editar">Guardar</button>
+                        <button onClick={cambiarEditando} className="btn-accion btn-eliminar">Cancelar</button>
+                    </div>
                 </>
             ) : 
             (
                 <>
                     <span>{mov.fecha}</span>
                     <span>{mov.descripcion}</span>
-                    <span>{mov.categoria}</span>
-                    <span>{mov.tipo === 'ingreso' ? `+ $${mov.monto}` : `- $${mov.monto}`}</span>
-                    <span>{mov.tipo}</span>
+                    <span className="span-categoria">
+                        {mov.categoria}
+                    </span>
+                    <span className={mov.tipo === 'ingreso' ? 'monto-ingreso' : 'monto-gasto'}>
+                        {mov.tipo === 'ingreso' ? `+ $${mov.monto}` : `- $${mov.monto}`}
+                    </span>
+                    <span className={mov.tipo === 'ingreso' ? 'tipo-ingreso' : 'tipo-gasto'}>
+                        {mov.tipo}
+                    </span>
                     <span>
-                        <button onClick={manejoEliminar}>Eliminar</button>
-                        <button onClick={cambiarEditando}>Editar</button>
+                        <button className="btn-accion btn-editar" onClick={cambiarEditando}>Editar</button>
+                        <button className="btn-accion btn-eliminar" onClick={manejoEliminar}>Eliminar</button>
                     </span>
                 </>
 

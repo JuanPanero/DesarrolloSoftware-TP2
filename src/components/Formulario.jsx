@@ -36,12 +36,35 @@ function Formulario({agregarMov, className}) {
         <div>
             <form onSubmit={guardarMov} className='formulario'>
                 <h2>Añadir Movimientos</h2>
+
+                <div className='campoForm'>
+                    <label htmlFor="fecha">Fecha</label>
+                    <input 
+                        id="fecha"
+                        type="date" 
+                        value={fecha}
+                        onChange={(e) => setFecha(e.target.value)}
+                    />
+                </div>
                 
                 <div className='campoForm'>
                     <label htmlFor="descripcion">Descripción</label>
                     <input type="text" id='descripcion' placeholder='Ej. Supermercado' value={descripcion} 
                         onChange={(e)=>setDescripcion(e.target.value)}
                     />
+                </div>
+
+                <div className='campoForm'>
+                    <label htmlFor="categoria">Categoría</label>
+                    <select id='categoria' value={categoria} placeholder='Categoría' onChange={(e)=>setCategoria(e.target.value)}>
+                        <option value="comida">Comida</option>
+                        <option value="salario">Salario</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="ocio">Ocio</option>
+                        <option value="servicios">Servicios</option>
+                        <option value="salud">Salud</option>
+                        <option value="otros">Otros</option>
+                    </select>
                 </div>
                 
                 <div className='campoForm'>
@@ -77,30 +100,7 @@ function Formulario({agregarMov, className}) {
                         <label htmlFor="tipoIngreso" className="radio-label label-ingreso">Ingreso</label>
                     </div>
                 </div>
-                
 
-                <div className='campoForm'>
-                    <label htmlFor="categoria">Categoría</label>
-                    <select id='categoria' value={categoria} placeholder='Categoría' onChange={(e)=>setCategoria(e.target.value)}>
-                        <option value="comida">Comida</option>
-                        <option value="salario">Salario</option>
-                        <option value="transporte">Transporte</option>
-                        <option value="ocio">Ocio</option>
-                        <option value="servicios">Servicios</option>
-                        <option value="salud">Salud</option>
-                        <option value="otros">Otros</option>
-                    </select>
-                </div>
-
-                <div className='campoForm'>
-                    <label htmlFor="fecha">Fecha</label>
-                    <input 
-                        id="fecha"
-                        type="date" 
-                        value={fecha}
-                        onChange={(e) => setFecha(e.target.value)}
-                    />
-                </div>
 
                 <button type='submit'>Guardar Movimiento</button>
             </form>
