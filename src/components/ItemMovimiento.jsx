@@ -15,7 +15,6 @@ function ItemMovimiento({mov, eliminar, actualizar}){
 
     const cambiarEditando = (e) =>{
         e.preventDefault()
-
         if (editando) {
             setDescripcion(mov.descripcion);
             setMonto(mov.monto);
@@ -23,18 +22,15 @@ function ItemMovimiento({mov, eliminar, actualizar}){
             setCategoria(mov.categoria);
             setTipo(mov.tipo)
         }
-
         setEditando(!editando)
     }
 
     const manejoCambiar = (e) =>{
         e.preventDefault()
-
         if(monto <= 0 || descripcion === ''){
             alert("Por favor, complete bien los campos")
             return
         }
-
         const nuevoMov = {
             id: mov.id,
             descripcion,
@@ -43,14 +39,19 @@ function ItemMovimiento({mov, eliminar, actualizar}){
             categoria,
             fecha
         }
-
         actualizar(nuevoMov)
-        
         setEditando(false)
     }
 
+    const formatearFecha = (fechaStr) => {
+    if(!fechaStr) return "";
+    const [anio, mes, dia] = fechaStr.split("-");
+    return `${dia}/${mes}/${anio}`;
+};
+
+
     return(
-        <li className="contenedor-item">
+        <li className={`contenedor-item ${editando ? 'editando' : ''}`}>
             {editando ? (
                 <>
                     <input 
@@ -80,7 +81,7 @@ function ItemMovimiento({mov, eliminar, actualizar}){
                         <option value="gasto">Gasto</option>
                         <option value="ingreso">Ingreso</option>
                     </select>
-                    <div>
+                    <div className="contenedor-acciones">
                         <button onClick={manejoCambiar} className="btn-accion btn-editar">Guardar</button>
                         <button onClick={cambiarEditando} className="btn-accion btn-eliminar">Cancelar</button>
                     </div>
@@ -88,7 +89,7 @@ function ItemMovimiento({mov, eliminar, actualizar}){
             ) : 
             (
                 <>
-                    <span>{mov.fecha}</span>
+                    <span>{formatearFecha(mov.fecha)}</span>
                     <span>{mov.descripcion}</span>
                     <span className="span-categoria">
                         {mov.categoria}

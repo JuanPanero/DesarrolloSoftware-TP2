@@ -1,8 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 700; 
+    letter-spacing: -0.025em; 
+}
+
+span, p, label {
+    font-size: 0.9rem;
+}
+
 html, body, #root {
     margin: 0;
     padding: 0;
-    height: 100%; /* Obligatorio */
-    background-color: #f9f9f9; /* El fondo gris va acá */
+    height: 100%;
+    background-color: #f9f9f9;
 }
 
 .contenedorApp{
@@ -15,23 +31,78 @@ html, body, #root {
     min-height: 100vh
 }
 
+.columna-izq{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0 0 300px;
+}
+
+/*Presupuesto*/
+
+.tarjeta-presupuesto{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-presupuesto{
+    display: flex;
+}
+
+.form-presupuesto label{
+    padding: 5px 10px;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid  #d1d5db;
+    background-color: #f8f9fa;
+}
+
+.form-presupuesto input{
+    padding: 5px 10px;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid  #d1d5db;
+}
+
+.info-consumo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.barra-fondo {
+    background-color: #f3f4f6;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.barra-progreso {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.seguro { background-color: #10b981; } 
+.alerta { background-color: #f59e0b; } 
+.peligro { background-color: #ef4444; } 
+
 /*Formulario*/
 
 .formulario{
     display: flex;
     flex-direction: column;
-    flex: 0 0 500px;
     gap: 20px;
     padding: 20px;
     background-color: #FFFFFF;
+    box-sizing: border-box;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .formulario h2{
-    margin: 0 0 10px 0;
-    font-size: 1.5rem;
-    color: #333;
+    margin: 0;
 }
 
 .campoForm{
@@ -41,8 +112,7 @@ html, body, #root {
 }
 
 .formulario label{
-    font-weight: bold;
-    color: #333; 
+    font-weight: bold; 
     margin: 0;
 }
 
@@ -64,7 +134,7 @@ html, body, #root {
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
+    margin: 10px 0 15px 0;
 }
 
 .formulario button:hover {
@@ -136,12 +206,13 @@ html, body, #root {
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: black;
 }
 
 .tarjeta p {
     margin: 10px 0 0;
-    font-size: 1.6rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 .positivo {
@@ -167,9 +238,10 @@ html, body, #root {
 
 .header-tabla{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-columns: 120px 1.5fr 1fr 1fr 1fr 150px;
     align-items: center; 
-    padding: 15px 10px;
+    padding: 12px 15px;
+    gap: 15px;
     border-bottom: 1px solid  #d1d5db;
     background-color: #f8f9fa;
     font-weight: bold;
@@ -185,8 +257,9 @@ html, body, #root {
 
 .contenedor-item{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
-    padding: 15px 10px;    
+    grid-template-columns: 120px 1.5fr 1fr 1fr 1fr 150px;
+    padding: 12px 15px;    
+    gap: 15px;
     align-items: center;
     border-bottom: 1px solid  #d1d5db;
 }
@@ -197,18 +270,20 @@ html, body, #root {
 
 .contenedor-item input, 
 .contenedor-item select {
-    background: transparent; 
-    border: none;            
-    font-family: inherit;     
-    font-size: inherit;          
-    outline: none;  
-    width: fit-content;  
-    display: block;      
-    margin-left: 0;        
-    margin-right: auto;    
-    text-align: left;      
+    width: auto;         
+    min-width: 80px;    
+    max-width: 100%;       
+    border: none;
+    border-radius: 4px;
+    padding: 2px 4px;
+    cursor: pointer;
+    justify-self: start;
+    font-size: 0.9rem;
 }
 
+.contenedor-item input[type="text"] {
+    width: 90%; 
+}
 
 .span-categoria {
     background-color: #f3f4f6;
@@ -257,6 +332,12 @@ html, body, #root {
     background: #ecfdf5
 }
 
+.contenedor-acciones { 
+    display: flex;
+    flex-direction: row; 
+    justify-content: flex-start;
+}
+
 .btn-accion {
     padding: 6px 12px;
     border-radius: 6px;
@@ -286,6 +367,37 @@ html, body, #root {
 }
 
 
+.contenedor-filtros{
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+}    
+
+.campo-filtro{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: fit-content;
+}
+
+.contenedor-filtros label{
+    font-weight: bold;
+    margin: 0;
+}
+
+.contenedor-filtros select{
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid #767676;
+    width: auto;
+    box-sizing: border-box;
+}
 
 
+.contenedor-item.editando,  
+.contenedor-item.editando select,
+.contenedor-item.editando input
+ {
+    background-color: #f0f7ff ; /* Un azul muy clarito */
 
+}
