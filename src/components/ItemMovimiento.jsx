@@ -49,7 +49,6 @@ function ItemMovimiento({mov, eliminar, actualizar}){
     return `${dia}/${mes}/${anio}`;
 };
 
-
     return(
         <li className={`contenedor-item ${editando ? 'editando' : ''}`}>
             {editando ? (

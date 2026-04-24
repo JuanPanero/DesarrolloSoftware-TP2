@@ -10,6 +10,7 @@ h2 {
     letter-spacing: -0.025em; 
 }
 
+
 span, p, label {
     font-size: 0.9rem;
 }
@@ -17,18 +18,19 @@ span, p, label {
 html, body, #root {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
     background-color: #f9f9f9;
+    overflow: hidden;
 }
 
-.contenedorApp{
+.contenedor-app{
     display: flex;
     gap: 20px;
     padding: 20px;
     box-sizing: border-box;
     align-items: stretch; 
     background-color: #f9f9f9; 
-    min-height: 100vh
+    height: 100vh;
 }
 
 .columna-izq{
@@ -45,8 +47,14 @@ html, body, #root {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
     box-sizing: border-box;
+}
+
+.tarjeta-presupuesto h2{
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.4rem;
 }
 
 .form-presupuesto{
@@ -54,14 +62,16 @@ html, body, #root {
 }
 
 .form-presupuesto label{
-    padding: 5px 10px;
+    padding: 5px 8px;
     border-radius: 8px 0 0 8px;
     border: 1px solid  #d1d5db;
     background-color: #f8f9fa;
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .form-presupuesto input{
-    padding: 5px 10px;
+    padding: 5px 8px;
     border-radius: 0 8px 8px 0;
     border: 1px solid  #d1d5db;
 }
@@ -73,9 +83,8 @@ html, body, #root {
 
 .barra-fondo {
     background-color: #f3f4f6;
-    height: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
+    height: 14px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -88,12 +97,29 @@ html, body, #root {
 .alerta { background-color: #f59e0b; } 
 .peligro { background-color: #ef4444; } 
 
+.alerta-presupuesto {
+    background-color: #fef2f2; 
+    border: 1px solid #fee2e2;
+    color: #991b1b;
+    padding: 8px;
+    border-radius: 8px; 
+    font-size: 0.8rem;
+    animation: fadeIn 0.5s ease;
+    margin-top: 10px; 
+}
+
+.alerta-presupuesto p{
+    margin: 0;
+    padding: 0;
+}
+
 /*Formulario*/
 
 .formulario{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    flex: 1;
+    gap: 15px;
     padding: 20px;
     background-color: #FFFFFF;
     box-sizing: border-box;
@@ -119,22 +145,23 @@ html, body, #root {
 .formulario input, 
 .formulario textarea, 
 .formulario  select{
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid #767676;
     width: 100%;
     box-sizing: border-box;
-}
+}   
 
 .formulario button{
     background-color: #007bff;
     color: #FFFFFF;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
-    margin: 10px 0 15px 0;
+    margin-top: 10px;
+    margin-bottom: 3px;
 }
 
 .formulario button:hover {
@@ -175,9 +202,10 @@ html, body, #root {
 
 /*Informacion*/
 
-.contenedorInfo{
+.contenedor-info{
     display: flex;
     flex-direction: column;
+    height: 100%;
     flex: 1;
     gap: 20px;
 }
@@ -201,9 +229,9 @@ html, body, #root {
 }
 
 
-.tarjeta h2 {
+.tarjeta h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: black;
@@ -211,18 +239,19 @@ html, body, #root {
 
 .tarjeta p {
     margin: 10px 0 0;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
 }
 
 .positivo {
-    color: #27ae60; 
+    color: #27ae60;
+    background-color: #f0fdf4; 
 }
 
 .negativo {
     color: #e74c3c; 
+    background-color: #fef2f2;
 }
-
 
 /*Listado*/
 
@@ -234,6 +263,12 @@ html, body, #root {
     background-color: #FFFFFF;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;   
+    
+}
+
+.contenedor-listado h2{
+    margin-top: 0;
 }
 
 .header-tabla{
@@ -242,10 +277,38 @@ html, body, #root {
     align-items: center; 
     padding: 12px 15px;
     gap: 15px;
-    border-bottom: 1px solid  #d1d5db;
+    border: 1px solid  #d1d5db;
     background-color: #f8f9fa;
     font-weight: bold;
     border-radius: 8px 8px 0 0;
+}
+
+
+.contenedor-filtros{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-bottom: 20px;
+    max-width: 80%;
+}    
+
+.campo-filtro{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 90%;
+}
+
+.contenedor-filtros label{
+    font-weight: bold;
+    margin: 0;
+}
+
+.contenedor-filtros select{
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #767676;
+    box-sizing: border-box;
 }
 
 .contenedor-listado ul{
@@ -253,6 +316,9 @@ html, body, #root {
     padding: 0;      
     margin: 0;        
     width: 100%;
+    flex: 1;            
+    overflow-y: auto;  
+    min-height: 0;
 }
 
 .contenedor-item{
@@ -262,10 +328,12 @@ html, body, #root {
     gap: 15px;
     align-items: center;
     border-bottom: 1px solid  #d1d5db;
+    border-left: 1px solid  #d1d5db;
+    border-right: 1px solid  #d1d5db;
 }
 
 .contenedor-item:last-child{
-    border-bottom: none;
+    border-radius: 0 0 8px 8px;
 }
 
 .contenedor-item input, 
@@ -275,10 +343,10 @@ html, body, #root {
     max-width: 100%;       
     border: none;
     border-radius: 4px;
-    padding: 2px 4px;
     cursor: pointer;
     justify-self: start;
     font-size: 0.9rem;
+    padding: 0;
 }
 
 .contenedor-item input[type="text"] {
@@ -287,7 +355,7 @@ html, body, #root {
 
 .span-categoria {
     background-color: #f3f4f6;
-    padding: 2px 10px;
+    padding: 2px 8px;
     border-radius: 8px;    
     text-transform: capitalize;
     border: 1px solid #e5e7eb;
@@ -308,28 +376,16 @@ html, body, #root {
     font-weight: bold;
 }
 
-.tipo-gasto,
-.tipo-ingreso {
-    background: #fef2f2;
-    padding: 2px 8px;
-    border-radius: 4px;
-    text-transform: capitalize;
-    width: fit-content;  
-    display: block;     
-    margin-left: 0;       
-    margin-right: auto;    
-    text-align: left;
-    font-weight: bold;
-}
-
 .tipo-gasto{
     color: #dc2626;
-    background: #fef2f2;
+    text-transform: capitalize;      
+    font-weight: bold;
 }
 
 .tipo-ingreso{
     color: #059669;
-    background: #ecfdf5
+    text-transform: capitalize;      
+    font-weight: bold;
 }
 
 .contenedor-acciones { 
@@ -366,38 +422,17 @@ html, body, #root {
     border-color: #10b981;     
 }
 
-
-.contenedor-filtros{
-    display: flex;
-    gap: 20px;
-    padding-bottom: 20px;
-}    
-
-.campo-filtro{
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    width: fit-content;
-}
-
-.contenedor-filtros label{
-    font-weight: bold;
-    margin: 0;
-}
-
-.contenedor-filtros select{
-    padding: 4px 8px;
-    border-radius: 8px;
-    border: 1px solid #767676;
-    width: auto;
-    box-sizing: border-box;
-}
-
-
 .contenedor-item.editando,  
 .contenedor-item.editando select,
 .contenedor-item.editando input
  {
-    background-color: #f0f7ff ; /* Un azul muy clarito */
+    background-color: #f0f7ff ;
+}
 
+.contenedor-listado ul::-webkit-scrollbar {
+    width: 6px;
+}
+.contenedor-listado ul::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
 }

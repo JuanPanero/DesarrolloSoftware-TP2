@@ -6,7 +6,6 @@ function Balance({movimientos, className}){
     let totalIngreso = 0
     let totalGasto = 0
 
-
     movimientos.forEach(mov => {
         if (mov.tipo === 'ingreso'){
             totalIngreso += mov.monto
@@ -19,7 +18,7 @@ function Balance({movimientos, className}){
 
     return(
         <div className="contenedor-balance">
-            <TarjetaBalance titulo='Balance Total' monto={balanceTotal < 0 ? balanceTotal *(-1): balanceTotal} tipo={balanceTotal >=0 ? 'ingreso' : 'gasto'}/>
+            <TarjetaBalance titulo='Balance' monto={balanceTotal < 0 ? balanceTotal *(-1): balanceTotal} tipo={balanceTotal >=0 ? 'ingreso' : 'gasto'}/>
             <TarjetaBalance titulo='Ingresos' monto={totalIngreso} tipo='ingreso'/>
             <TarjetaBalance titulo='Gastos' monto={totalGasto} tipo='gasto'/>
         </div>

@@ -6,7 +6,7 @@ function TarjetaBalance({titulo, monto, tipo}){
 
     return(
         <div className={`tarjeta ${claseMonto}`}>
-            <h2>{titulo}</h2>
+            <h3>{titulo}</h3>
             <p>{tipo === 'ingreso' ? `+ $${monto.toLocaleString()}` : `- $${monto.toLocaleString()}`}</p>
         </div>
     )

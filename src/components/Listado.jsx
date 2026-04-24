@@ -1,4 +1,4 @@
-import { use, useState } from 'react'
+import { useState } from 'react'
 import ItemMovimiento from './ItemMovimiento'
 import '../App.css'
 
@@ -22,14 +22,18 @@ function Listado({movimientos, filtro, orden, setOrden, setFiltro, eliminar, act
             <option value="otros">Otros</option>            
           </select>
         </div>
+      
         <div className='campo-filtro'>
           <label htmlFor="ordenar">Ordenar por</label>
           <select id="ordenar" value={orden} onChange={(e)=>setOrden(e.target.value)}>
-            <option value="fecha">Fecha</option>
-            <option value="monto">Monto</option>
+            <option value="fechaAsc">Fecha Ascendentemente</option>
+            <option value="fechaDes">Fecha Descendentemente</option>
+            <option value="montoAsc">Monto Ascendentemente</option>
+            <option value="montoDes">Monto Descendentemente</option>
           </select>
         </div>
       </form>
+
       <div className='header-tabla'>
         <span>Fecha</span>
         <span>Descripción</span>
@@ -38,6 +42,7 @@ function Listado({movimientos, filtro, orden, setOrden, setFiltro, eliminar, act
         <span>Tipo</span>
         <span>Acciones</span>
       </div>
+      
       <ul>
         {movimientos.map((elemento)=>(
           <ItemMovimiento key={elemento.id} mov={elemento} eliminar={eliminar} actualizar={actualizar}/>
