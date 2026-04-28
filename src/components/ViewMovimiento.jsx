@@ -11,7 +11,9 @@ function ViewMovimiento({mov, eliminar, cambiarModo}){
     return(
         <>
             <span>{formatearFecha(mov.fecha)}</span>
-            <span>{mov.descripcion}</span>
+            <span className="celda-descripcion">
+                {mov.descripcion}
+            </span>
             <span className="span-categoria">
                 {mov.categoria}
             </span>

@@ -52,7 +52,7 @@ function EditMovimiento({mov, actualizar, cambiarModo, categorias}){
         </select>
         <div className="contenedor-acciones">
             <button onClick={manejoCambiar} className="btn-accion btn-editar">Guardar</button>
-            <button onClick={cambiarModo} className="btn-accion btn-eliminar">Cancelar</button>
+            <button onClick={cambiarModo} className="btn-accion btn-cancelar">Cancelar</button>
         </div>
     </>        
 

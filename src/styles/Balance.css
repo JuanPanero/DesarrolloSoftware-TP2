@@ -7,9 +7,9 @@
 
 .tarjeta{
     flex: 1;
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fcfcfc;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
     text-align: center;
     padding: 20px;
 }
@@ -29,11 +29,9 @@
 }
 
 .positivo {
-    color: #27ae60;
-    background-color: #f0fdf4;
+    color: #28a745;
 }
 
 .negativo {
-    color: #e74c3c; 
-    background-color: #fef2f2;
+    color: #dc3545; 
 }

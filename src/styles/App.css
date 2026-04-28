@@ -20,7 +20,7 @@ html, body, #root {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     overflow: auto;
     color: #333;
 }
@@ -30,7 +30,7 @@ html, body, #root {
     gap: 15px;
     padding: 15px;
     align-items: stretch; 
-    height: calc    (100vh - 50px);
+    height: calc(100vh - 50px);
     box-sizing: border-box;
     flex-wrap: nowrap;
     overflow-x: auto;

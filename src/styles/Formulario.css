@@ -4,10 +4,10 @@
     flex: 0 1 auto;
     gap: 15px;
     padding: 20px;
-    background-color: #FFFFFF;
+    background-color: #fcfcfc;
+    border: 1px solid #e5e7eb;
     box-sizing: border-box;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
     overflow-y: auto; 
     max-height: 100%;
 }
@@ -68,18 +68,18 @@
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    background: #f1f1f1;
+    background: #f3f4f6;
     font-weight: bold;
     transition: 0.3s;
 }   
 
 .radio-input:checked + .label-gasto {
-    background-color: #e74c3c;
+    background-color: #dc3545;
     color: white;
 }
 
 .radio-input:checked + .label-ingreso {
-    background-color: #2ecc71;
+    background-color: #28a745;
     color: white;
 }
 
