@@ -1,4 +1,5 @@
 import ItemMovimiento from './ItemMovimiento'
+import '../styles/Listado.css'
 
 function Listado({movimientos, filtro, orden, setOrden, setFiltro, eliminar, actualizar, categorias}) {
   

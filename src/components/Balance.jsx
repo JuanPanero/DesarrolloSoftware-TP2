@@ -1,4 +1,5 @@
 import TarjetaBalance from './TarjetaBalance'
+import '../styles/Balance.css'
 
 function Balance({movimientos}){
     

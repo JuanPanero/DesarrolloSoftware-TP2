@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import '../styles/Presupuesto.css'
 
 function Presupuesto({movimientos}){
     const [presupuesto, setPresupuesto] = useState(()=>{
@@ -30,17 +31,19 @@ function Presupuesto({movimientos}){
     const excedido = totalGastos > presupuesto
 
     return(
-        <div className="tarjeta-presupuesto">
+        <div className={`tarjeta-presupuesto ${(excedido && presupuesto !=0 ) ? 'alerta-tarjeta': ''}`}>
             <h2>Límite de Gastos Mensual</h2>
             <div className="form-presupuesto">
                 <label htmlFor="presupuesto">Presupuesto</label>
                 <input type="number" placeholder="$0.00" value={presupuesto} onChange={e => setPresupuesto(e.target.value)}/>
             </div>
-            <div className="info-consumo">
-                <p>Gastado: ${totalGastos}</p>
-                { !excedido && <p>Quedan: ${presupuesto - totalGastos}</p>}
-                <p>{porcentaje.toFixed(1)}%</p>
-            </div>
+            {!excedido && (
+                <div className="info-consumo">
+                    <p>Gastado: ${totalGastos}</p>
+                    <p>Quedan: ${presupuesto - totalGastos}</p>
+                    <p>{porcentaje.toFixed(1)}%</p>
+                </div>
+            )}
             <div className="barra-fondo">
                 <div
                     className={`barra-progreso  ${excedido ? 'peligro': porcentaje > 75 ? 'alerta' : 'seguro'}`}

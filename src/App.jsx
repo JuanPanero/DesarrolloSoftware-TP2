@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import './styles/App.css'
 import Formulario from './components/Formulario'
 import Listado from './components/Listado'
 import Balance from './components/Balance'

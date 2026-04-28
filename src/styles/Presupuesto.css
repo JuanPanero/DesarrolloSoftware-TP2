@@ -1,0 +1,74 @@
+
+.tarjeta-presupuesto{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.tarjeta-presupuesto h2{
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.form-presupuesto{
+    display: flex;
+}
+
+.form-presupuesto label{
+    padding: 5px 8px;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid  #d1d5db;
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.form-presupuesto input{
+    padding: 5px 8px;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid  #d1d5db;
+}
+
+.info-consumo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.barra-fondo {
+    margin-top: 10px;
+    background-color: #f3f4f6;
+    height: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.barra-progreso {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.seguro { background-color: #10b981; } 
+.alerta { background-color: #f59e0b; } 
+.peligro { background-color: #ef4444; } 
+
+.alerta-tarjeta{
+    background-color: #fef2f2; 
+    border: 1px solid #fee2e2;
+    animation: fadeIn 0.5s ease;
+}
+
+.alerta-presupuesto {
+    color: #991b1b;
+    font-size: 0.8rem;
+    animation: fadeIn 0.5s ease;
+    margin-top: 10px; 
+}
+
+.alerta-presupuesto p{
+    margin: 0;
+    padding: 0;
+}

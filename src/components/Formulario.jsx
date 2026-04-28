@@ -1,4 +1,5 @@
 import { useState } from 'react'   
+import '../styles/Formulario.css'
 
 function Formulario({agregarMov, categorias}) {
     const [descripcion, setDescripcion] = useState('')
