@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react"
-import '../App.css'
 
 function Presupuesto({movimientos}){
     const [presupuesto, setPresupuesto] = useState(()=>{
-        const presupuestoGuardado = localStorage.getItem('presupuesto')
-        return presupuestoGuardado ? JSON.parse(presupuestoGuardado) : 0
+        try {
+            const guardado = localStorage.getItem('presupuesto');
+            return guardado ? JSON.parse(guardado) : 0;
+        } catch {
+            return 0;
+        }
     })
+
     const hoy = new Date()
     const monthActual = hoy.getMonth()
     const yearActual = hoy.getFullYear()
@@ -15,7 +19,6 @@ function Presupuesto({movimientos}){
     }, [presupuesto]);
 
     let totalGastos = 0
-
     movimientos.forEach(mov => {
         const fechaMov = new Date(mov.fecha)
         if (mov.tipo === 'gasto' && monthActual === fechaMov.getMonth() && yearActual === fechaMov.getFullYear()){
@@ -35,7 +38,7 @@ function Presupuesto({movimientos}){
             </div>
             <div className="info-consumo">
                 <p>Gastado: ${totalGastos}</p>
-                { excedido ? '': <p>Quedan: ${presupuesto - totalGastos}</p>}
+                { !excedido && <p>Quedan: ${presupuesto - totalGastos}</p>}
                 <p>{porcentaje.toFixed(1)}%</p>
             </div>
             <div className="barra-fondo">
@@ -44,12 +47,12 @@ function Presupuesto({movimientos}){
                     style={{width: `${porcentaje}%` }} 
                 ></div>
             </div>
-            {(excedido && presupuesto != 0) ? 
-            (<div className="alerta-presupuesto">
-                <p>⚠️ <strong>Atención:</strong></p>
-                <p>Has superado tu presupuesto por ${totalGastos - presupuesto}.</p>
-            </div>) : ('')}
-            
+            {excedido && presupuesto != 0 && (
+                <div className="alerta-presupuesto">
+                    <p>⚠️ <strong>Atención:</strong></p>
+                    <p>Has superado tu presupuesto por ${totalGastos - presupuesto}.</p>
+                </div>
+            )}
         </div>
     )
 }

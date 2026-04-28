@@ -1,4 +1,4 @@
-function ViewMovimiento({mov, eliminar, cambiarEditando}){
+function ViewMovimiento({mov, eliminar, cambiarModo}){
 
         const manejoEliminar= (e) =>{
             eliminar(mov)
@@ -16,13 +16,13 @@ function ViewMovimiento({mov, eliminar, cambiarEditando}){
                 {mov.categoria}
             </span>
             <span className={mov.tipo === 'ingreso' ? 'monto-ingreso' : 'monto-gasto'}>
-                {mov.tipo === 'ingreso' ? `+ $${mov.monto}` : `- $${mov.monto}`}
+                {mov.tipo === 'ingreso' ? `+ $${mov.monto.toLocaleString()}` : `- $${mov.monto.toLocaleString()}`}
             </span>
             <span className={mov.tipo === 'ingreso' ? 'tipo-ingreso' : 'tipo-gasto'}>
                 {mov.tipo}
             </span>
             <span>
-                <button className="btn-accion btn-editar" onClick={cambiarEditando}>Editar</button>
+                <button className="btn-accion btn-editar" onClick={cambiarModo}>Editar</button>
                 <button className="btn-accion btn-eliminar" onClick={manejoEliminar}>Eliminar</button>
             </span>
                 </>

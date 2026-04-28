@@ -2,10 +2,10 @@ import { useState } from "react"
 import ViewMovimiento from "./ViewMovimiento"
 import EditMovimiento from "./EditMovimiento"
 
-function ItemMovimiento({mov, eliminar, actualizar}){
+function ItemMovimiento({mov, eliminar, actualizar, categorias}){
     const [editando, setEditando] = useState(false)
     
-    const cambiarEditando = () =>{
+    const cambiarModo = () =>{
         setEditando(!editando)
     }
 
@@ -15,17 +15,17 @@ function ItemMovimiento({mov, eliminar, actualizar}){
                 <EditMovimiento
                     mov={mov}
                     actualizar={actualizar}
-                    cambiarEditando={cambiarEditando}
+                    cambiarModo={cambiarModo}
+                    categorias={categorias}
                 />
             ) : 
             (
                 <ViewMovimiento
                     mov={mov}
                     eliminar={eliminar}
-                    cambiarEditando={cambiarEditando}
+                    cambiarModo={cambiarModo}
                 />
-            )
-            }
+            )}
         </li>
     )
 }

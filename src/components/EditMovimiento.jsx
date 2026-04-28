@@ -1,5 +1,5 @@
 import { useState } from "react"
-function EditMovimiento({mov, actualizar, cambiarEditando}){
+function EditMovimiento({mov, actualizar, cambiarModo, categorias}){
         const [descripcion, setDescripcion] = useState(mov.descripcion)
         const [monto, setMonto] = useState(mov.monto)
         const [tipo, setTipo] = useState(mov.tipo)
@@ -8,7 +8,7 @@ function EditMovimiento({mov, actualizar, cambiarEditando}){
 
         const manejoCambiar = (e) =>{
         e.preventDefault()
-        if(monto <= 0 || descripcion === ''){
+        if(monto <= 0 || monto === '' || descripcion.trim() === ''){
             alert("Por favor, complete bien los campos")
             return
         }
@@ -21,41 +21,38 @@ function EditMovimiento({mov, actualizar, cambiarEditando}){
             fecha
         }
         actualizar(nuevoMov)
-        cambiarEditando()
+        cambiarModo()
         }
 
     return(
         <>
         <input 
-            id="fecha"
             type="date" 
             value={fecha}
             onChange={(e) => setFecha(e.target.value)}
         />
-        <input type="text" id='descripcion' placeholder='Ej. Supermercado' value={descripcion} 
+        <input type="text" placeholder='Ej. Supermercado' value={descripcion} 
             onChange={(e)=>setDescripcion(e.target.value)}
         />
         <select id='categoria' value={categoria} placeholder='Categoría'
             onChange={(e)=>setCategoria(e.target.value)}>
-            <option value="comida">Comida</option>
-            <option value="salario">Salario</option>
-            <option value="transporte">Transporte</option>
-            <option value="ocio">Ocio</option>
-            <option value="servicios">Servicios</option>
-            <option value="salud">Salud</option>
-            <option value="otros">Otros</option>
+            {categorias.map((cat)=>(
+                <option key={cat} value={cat}  className='option-categoria'>
+                    {cat}
+                </option>
+            ))}   
         </select>
-        <input type="number" id='monto' placeholder='$0.00' value={monto} 
+        <input type="number" placeholder='$0.00' value={monto} 
             onChange={(e)=>setMonto(e.target.value)}
         />
-        <select id="tipo" value={tipo}
+        <select value={tipo}
             onChange={(e)=>setTipo(e.target.value)}>
             <option value="gasto">Gasto</option>
             <option value="ingreso">Ingreso</option>
         </select>
         <div className="contenedor-acciones">
             <button onClick={manejoCambiar} className="btn-accion btn-editar">Guardar</button>
-            <button onClick={cambiarEditando} className="btn-accion btn-eliminar">Cancelar</button>
+            <button onClick={cambiarModo} className="btn-accion btn-eliminar">Cancelar</button>
         </div>
     </>        
 
