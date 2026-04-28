@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './styles/App.css'
+import Header from './components/Header'
 import Formulario from './components/Formulario'
 import Listado from './components/Listado'
 import Balance from './components/Balance'
@@ -46,12 +47,14 @@ function App() {
   })
 
   return (
+    <>
+      <Header/> 
       <div className='contenedor-app'>
-        <div className='columna-izq'>
+        <aside className='columna-izq'>
           <Presupuesto movimientos={movimientos}/>
           <Formulario agregarMov={agregarMovimiento} categorias={categorias}/>
-        </div>
-        <div className='contenedor-info'>
+        </aside>
+        <main className='contenedor-info'>
           <Balance movimientos={movimientos}/>
           <Listado 
             movimientos={movOrdenados}
@@ -63,8 +66,9 @@ function App() {
             actualizar={editarMovimiento}
             categorias={categorias}
           />
-        </div>
+        </main>
       </div>
+    </>
   )
 }
 
